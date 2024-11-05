@@ -19,8 +19,7 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (error) throw error; 
-    
+    if (error) throw error;  
     if (!fontsLoaded) {
       SplashScreen.hideAsync();
     }
@@ -37,8 +36,9 @@ export default function RootLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={ {headerShown:
-        false}} 
-      />
+        false}} />
+      <Stack.Screen name="(auth)" options={ {headerShown:
+        false}} />
     </Stack>
   );
 }
