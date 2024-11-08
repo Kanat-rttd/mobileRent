@@ -1,7 +1,7 @@
 const mockData = [
     {
         id: 1,
-        name: "iPhone 15",
+        name: "iPhone 15 Pro",
         price: 4,
         image: require('./images/iPhone.png'),
         category: "Телефон",

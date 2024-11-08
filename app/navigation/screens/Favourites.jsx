@@ -6,7 +6,7 @@ export default function Favourites({navigation}) {
       <Text
         onPress={() => navigation.navigate('Main')}
       >
-        Избранное
+        Избранное1
       </Text>
     </View>
   );

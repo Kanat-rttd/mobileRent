@@ -28,7 +28,7 @@ function Item ({item}) {
         <Link className="bg-blue-600 active:bg-blue-700 text-white py-2 px-4 rounded-full transition-all duration-200"
             href={{
                 pathname: "/components/[ItemDetails]",
-                params: { id: item.id, name: item.name, price: item.price, image: item.image },
+                params: { id: item.id, name: item.name, price: item.price, image: item.image, category: item.category },
               }}
         >
           <Text className="font-medium text-white">Заказать</Text>
