@@ -2,6 +2,9 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
 import "../global.css";
+import MainNavContainer from "./navigation/MainNavContainer";
+import { FavoritesProvider } from "./context/FavoritesContext";
+import { SearchProvider } from "./context/SearchContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -19,7 +22,7 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (error) throw error;  
+    if (error) throw error;
     if (!fontsLoaded) {
       SplashScreen.hideAsync();
     }
@@ -34,11 +37,11 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={ {headerShown:
-        false}} />
-      <Stack.Screen name="(auth)" options={ {headerShown:
-        false}} />
-    </Stack>
+    <SearchProvider>
+      <FavoritesProvider>
+        <MainNavContainer />
+      </FavoritesProvider>
+    </SearchProvider>
+
   );
 }

@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
       borderRadius: 8,
       paddingHorizontal: 8,
       marginBottom: 10,
-      backgroundColor: '#f0f0f0',
+      backgroundColor: '#fff',
     },
     placeholderStyle: {
       color: '#888',

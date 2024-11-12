@@ -1,14 +1,16 @@
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View, Text } from "react-native";
 import { Dropdown } from 'react-native-element-dropdown';
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Item from "../../components/Item";
 import mockData from "../../mockData";
 import FilterDropDown from "../../components/FilterDropDown";
-import { Ionicons } from '@expo/vector-icons';
+import Line from "../../components/Line";
+import { SearchContext } from "../../context/SearchContext";
 
-function MainPage() {
+function MainPage({ navigation }) {
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [filteredData, setFilteredData] = useState(mockData);
+  const {searchText} = useContext(SearchContext);
 
   const filterOptions = [
     {
@@ -38,29 +40,28 @@ function MainPage() {
     setFilteredData(newData);
   };
 
+  const filteredSearch = filteredData.filter((search) => {
+    return search.name.toLowerCase().includes(searchText.toLowerCase())
+  })
+
   return (
     <View style={styles.container}>
-
-      {/* поисковик + нотификации */}
-
       {/* Фильтр */}
       <View className="flex-row justify-between items-stretch">
         <FilterDropDown filterOptions={filterOptions} handleFilterChange={handleFilterChange} selectedFilter={selectedFilter}/>
-
-        <Ionicons name="cart" size={32} color='black'/>
       </View>
       
       <ScrollView contentContainerStyle={{ padding: 3 }}>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-          {filteredData.map((item) => (
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: "white" }}>
+          {filteredSearch.map((item) => (
             <View key={item.id} style={{ width: '50%', padding: 3 }}>
-              <Item item={item} />
+              <Item item={item} navigation={navigation}/>
+              <Line />
             </View>
           ))}
         </View>
       </ScrollView>
 
-      {/* bottom navigation bar */}
     </View>
   );
 };
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: "white"
   },
 });
 

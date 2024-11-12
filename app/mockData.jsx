@@ -5,6 +5,7 @@ const mockData = [
         price: 4,
         image: require('./images/iPhone.png'),
         category: "Телефон",
+        description: "Смартфон iPhone 15 Pro с 256 ГБ памяти. Отличная камера для записи качественных видео и мощный звук. Люди часто берут для студенческих съемок для разных проектов и так далее. Не поношенный и в отлчином качестве.",
     },
     {
         id: 2,
@@ -12,13 +13,15 @@ const mockData = [
         price: 5,
         image: require('./images/iPhone16.png'),
         category: "Телефон",
+        description: "Новейшая модель iPhone 16 с улучшенной производительностью и еще лучшей камерой.",
     },
     {
         id: 3,
         name: "PS 5 аренда",
         price: 18,
         image: require('./images/ps5_2.png'),
-        category: "Игровая приставка",
+        category: "Консоль",
+        description: "Консоль PlayStation 5 с потрясающей графикой и быстрой загрузкой. Идеальна для игр нового поколения.",
     },
     {
         id: 4,
@@ -26,6 +29,7 @@ const mockData = [
         price: 3,
         image: require('./images/nokia7a.png'),
         category: "Телефон",
+        description: "Телефон Nokia 7A с базовыми функциями. Подходит для ежедневных задач и длительного использования.",
     },
     {
         id: 5,
@@ -33,6 +37,7 @@ const mockData = [
         price: 25,
         image: require('./images/camera_sony.png'),
         category: "Камера",
+        description: "Профессиональная камера Sony для съемки высококачественных фото и видео. Подходит для фотографов.",
     },
     {
         id: 6,
@@ -40,6 +45,7 @@ const mockData = [
         price: 4,
         image: require('./images/galaxy9.png'),
         category: "Телефон",
+        description: "Смартфон Samsung Galaxy 9 с ярким экраном и мощной батареей. Хорошо подходит для мультимедиа.",
     },
     {
         id: 7,
@@ -47,13 +53,15 @@ const mockData = [
         price: 5,
         image: require('./images/iPhone16.png'),
         category: "Телефон",
+        description: "Еще один iPhone 16 с большой памятью и лучшей в своем классе камерой.",
     },
     {
         id: 8,
         name: "PS 5",
         price: 20,
         image: require('./images/ps5.png'),
-        category: "Игровая приставка",
+        category: "Консоль",
+        description: "Консоль PlayStation 5 для захватывающих игр с высокой производительностью и быстрой загрузкой.",
     },
     {
         id: 9,
@@ -61,6 +69,7 @@ const mockData = [
         price: 24,
         image: require('./images/camera_canon.png'),
         category: "Камера",
+        description: "Камера Canon для профессиональной съемки с высоким качеством изображения и удобным управлением.",
     },
     {
         id: 10,
@@ -68,6 +77,7 @@ const mockData = [
         price: 3,
         image: require('./images/nokia7a.png'),
         category: "Телефон",
+        description: "Надежный телефон Nokia 7A, идеален для повседневного использования и выполнения базовых задач.",
     },
     {
         id: 11,
@@ -75,13 +85,15 @@ const mockData = [
         price: 15,
         image: require('./images/camera_instax.png'),
         category: "Камера",
+        description: "Мгновенная камера Instax для моментальных фотографий, идеально подходит для вечеринок и путешествий.",
     },
     {
         id: 12,
-        name: "ps5",
+        name: "PS 5",
         price: 22,
         image: require('./images/ps5_3.png'),
-        category: "Игровая приставка",
+        category: "Консоль",
+        description: "PlayStation 5 с превосходной графикой и новыми функциями для игрового опыта нового уровня.",
     },
     {
         id: 13,
@@ -89,6 +101,7 @@ const mockData = [
         price: 4,
         image: require('./images/galaxy9.png'),
         category: "Телефон",
+        description: "Samsung Galaxy 9, удобный смартфон с отличным экраном и производительностью.",
     },
     {
         id: 14,
@@ -96,7 +109,8 @@ const mockData = [
         price: 5,
         image: require('./images/iPhone16.png'),
         category: "Телефон",
+        description: "Флагман iPhone 16 с передовой камерой и улучшенной производительностью.",
     },
-]
+];
 
 export default mockData;

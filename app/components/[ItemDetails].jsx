@@ -1,29 +1,43 @@
-import { Image, ScrollView, Text, View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { useRoute } from '@react-navigation/native';
 import DatePicker from "./Calendar";
 import Line from "./Line";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useState } from "react";
+import SwiperImage from "./SwiperImage";
 
 function ItemDetails() {
-  const { id, name, price, image, category } = useLocalSearchParams();
+  const route = useRoute(); 
+  const { id, name, price, image, category, description } = route.params || {};
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
+
+  const toggleDescription = () => {
+    setIsExpanded(!isExpanded)
+  };
+
+  const max_length = 100;
+
+  const handleHeart = () => {
+    setIsPressed(!isPressed)
+  }
 
   return (
     <ScrollView className="p-3 h-full bg-white">
 
-      <View className="w-full h-72">
-        <Image
-          className="w-full h-full rounded-xl"
-          source={image}
-          resizeMode="contain"
-        />
-      </View>
+      {/* картинка слайдер */}
+      <SwiperImage image={image} />
+      {/*  */}
     
       <Line />
 
+      {/* названия и отзывы */}
       <View >
+
         <View className="flex-row items-center justify-between">
           <Text className="text-xl ">{category} {name}</Text>
-          <Ionicons className="" name="heart-outline" color="red" size={26}/>
+          <Ionicons onPress={handleHeart} name={!isPressed ? "heart-outline" : "heart"} color="red" size={26}/>
         </View>
 
         <View className="flex-row items-center">
@@ -37,14 +51,41 @@ function ItemDetails() {
         </View>
 
       </View>
+      {/*  */}
       
       <Line />
 
+      {/* Цена */}
         <View>
           <Text className="text-xl font-bold">{price}000 ₸ в день</Text>
         </View>
+      {/*  */}
 
       <Line />
+
+      {/* Описание */}
+        <View>
+          <Text className="mb-2 font-medium text-xl">Описание</Text>
+          <View className="flex-row flex-wrap items-center">
+            <Text className="text-lg">
+                {isExpanded || description.length <= max_length
+                  ? description
+                  : `${description.substring(0, max_length)}..`
+              }
+              </Text>
+            {description.length > max_length && (
+              <TouchableOpacity onPress={toggleDescription}>
+                <Text className="text-blue-500">
+                  {isExpanded ? "Свернуть" : "Раскрыть"}
+                </Text>
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+      {/*  */}
+
+      <Line />
+
       {/* <DatePicker /> */}
     </ScrollView>
   );
