@@ -5,6 +5,7 @@ import "../global.css";
 import MainNavContainer from "./navigation/MainNavContainer";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import { SearchProvider } from "./context/SearchContext";
+import Toast from 'react-native-toast-message';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -40,6 +41,7 @@ export default function RootLayout() {
     <SearchProvider>
       <FavoritesProvider>
         <MainNavContainer />
+        <Toast />
       </FavoritesProvider>
     </SearchProvider>
 

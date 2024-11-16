@@ -69,7 +69,8 @@ function Item ({item, navigation}) {
             price: item.price, 
             image: item.image, 
             category: item.category, 
-            description: item.description 
+            description: item.description,
+            item: item,
           })}
         >
           <Text className="text-white text-sm font-semibold">Арендовать</Text>

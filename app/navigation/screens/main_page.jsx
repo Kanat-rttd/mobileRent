@@ -26,8 +26,8 @@ function MainPage({ navigation }) {
       value:"Камера"
     },
     {
-      label: "Приставки",
-      value: "Игровая приставка"
+      label: "Консоли",
+      value: "Консоль"
     }
   ];
 

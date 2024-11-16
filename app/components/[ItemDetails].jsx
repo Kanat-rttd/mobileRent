@@ -3,15 +3,17 @@ import { useRoute } from '@react-navigation/native';
 import DatePicker from "./Calendar";
 import Line from "./Line";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import SwiperImage from "./SwiperImage";
+import { FavoritesContext } from "../context/FavoritesContext";
+import CustomButton from "../../components/CustomButton";
+import Toast from 'react-native-toast-message';
 
 function ItemDetails() {
   const route = useRoute(); 
-  const { id, name, price, image, category, description } = route.params || {};
+  const { id, name, price, image, category, description, item } = route.params || {};
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isPressed, setIsPressed] = useState(false);
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded)
@@ -19,9 +21,29 @@ function ItemDetails() {
 
   const max_length = 100;
 
-  const handleHeart = () => {
-    setIsPressed(!isPressed)
+  const {addToFavorites, removeFromFavorites, isFavorite} = useContext(FavoritesContext);
+  const isItemFavorite = isFavorite(item.id);
+
+  const handleFavoritePress = () => {
+    if(isItemFavorite) {
+      removeFromFavorites(item.id)
+    } else {
+      addToFavorites(item)
+    }
   }
+
+  const handleOrderButton = () => {
+    Toast.show({
+      type: "success",
+      text1: `Вы заказали - ${name}`,
+      text2: "Дождитесь одобрения владельца",
+      visibilityTime: 5000,
+      text1Style: { fontSize: 18, fontWeight: "bold" }, // Стили для заголовка
+      text2Style: { fontSize: 16 }, // Стили для подзаголовка
+    })
+  };
+
+  const textStyles = ["text-white "]
 
   return (
     <ScrollView className="p-3 h-full bg-white">
@@ -36,8 +58,8 @@ function ItemDetails() {
       <View >
 
         <View className="flex-row items-center justify-between">
-          <Text className="text-xl ">{category} {name}</Text>
-          <Ionicons onPress={handleHeart} name={!isPressed ? "heart-outline" : "heart"} color="red" size={26}/>
+          <Text className="text-xl font-semibold">{category} {name}</Text>
+          <Ionicons onPress={handleFavoritePress} name={!isItemFavorite ? "heart-outline" : "heart"} color="red" size={26}/>
         </View>
 
         <View className="flex-row items-center">
@@ -86,7 +108,16 @@ function ItemDetails() {
 
       <Line />
 
-      {/* <DatePicker /> */}
+      <View>
+        <Text className="text-center text-lg font-semibold">Выберите промежуток аренды</Text>
+        <DatePicker name={name} price={price}/>
+      </View>
+      <Line />
+
+      {/* кнопка */}
+      <View className="mb-5">
+        <CustomButton title="Запросить аренду" handlePress={handleOrderButton} textStyles={textStyles}/>
+      </View>
     </ScrollView>
   );
 }
