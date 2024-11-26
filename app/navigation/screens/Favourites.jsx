@@ -17,6 +17,8 @@ export default function Favourites({ navigation }) {
     removeFromFavorites(itemId);
   };
 
+  console.log("Страница Избранное:", favorites)
+
   return (
     <ScrollView className="bg-white">
       <View>

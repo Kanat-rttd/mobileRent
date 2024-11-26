@@ -19,14 +19,17 @@ function ItemDetails() {
     setIsExpanded(!isExpanded)
   };
 
+
   const max_length = 100;
 
   const {addToFavorites, removeFromFavorites, isFavorite} = useContext(FavoritesContext);
-  const isItemFavorite = isFavorite(item.id);
+  const isItemFavorite = isFavorite(id);
+  console.log(isItemFavorite)
 
   const handleFavoritePress = () => {
     if(isItemFavorite) {
-      removeFromFavorites(item.id)
+      removeFromFavorites(id);
+      console.log(isItemFavorite)
     } else {
       addToFavorites(item)
     }

@@ -133,7 +133,7 @@ export default function MainNavContainer() {
                 <Tab.Screen name={favouritesName} component={Favourites} options={{ headerShown: true }} />
                 <Tab.Screen name={addPostName} component={AddPost} options={{ headerShown: true }} />
                 <Tab.Screen name={myPostsName} component={MyPosts} options={{ headerShown: true }} />
-                <Tab.Screen name={profileName} component={Profile} options={{ headerShown: true }} />
+                <Tab.Screen name={profileName} component={Profile} options={{ headerShown: false }} />
 
             </Tab.Navigator>
         </NavigationContainer>

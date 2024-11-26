@@ -14,7 +14,7 @@ function Item ({item, navigation}) {
       addToFavorites(item)
     }
   }
-  
+
   return (
     <View className="p-4 bg-zinc-100 rounded-xl overflow-hidden"> 
       
